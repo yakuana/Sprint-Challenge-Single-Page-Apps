@@ -1,23 +1,23 @@
 import React from 'react'
+import { Card, Icon, Image } from 'semantic-ui-react'; 
 
-export default function CharacterCard (props) {
+export default function CharacterCard ({character}) {
   return (
     <Card>
-      <Image src='https://react.semantic-ui.com/images/avatar/large/daniel.jpg' wrapped ui={false} />
+      <Image src={character.image} wrapped ui={false} />
 
       <Card.Content>
-        <Card.Header>Daniel</Card.Header>
-        <Card.Meta>Joined in 2016</Card.Meta>
+        <Card.Header>{character.name}</Card.Header>
+        <Card.Meta>{character.species} {character.status}</Card.Meta>
         <Card.Description>
-          Daniel is a comedian living in Nashville.
+          Location: {character.location.name}{"\n"}
+          Origin: {character.origin.name}
         </Card.Description>
       </Card.Content>
-      
+
       <Card.Content extra>
-        <a>
-          <Icon name='user' />
-          10 Friends
-        </a>
+          <Icon name='user'/>
+          Episodes 
       </Card.Content>
   </Card>
   )
