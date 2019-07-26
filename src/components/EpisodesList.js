@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import CharacterCard from "./CharacterCard"; 
+import EpisodeCard from "./EpisodesCard"; 
 
-export default function CharacterList() {
+export default function EpsiodeList() {
    // array of character objects  
-   const [characters, setCharacters] = useState([])
+   const [episodes, setEpisodes] = useState([])
    
    useEffect(() => {
-      const getCharacters = () => {
+      const getEpisodes = () => {
           axios
-              .get('https://rickandmortyapi.com/api/character/')
+              .get('https://rickandmortyapi.com/api/episode/')
               .then(response => {
                   // successful 
 
-                  console.log("characters array:", response.data.results)
+                  console.log("episodes array:", response.data.results)
                   
                   // get character array 
-                  setCharacters(response.data.results); 
+                  setEpisodes(response.data.results); 
               })
 
               .catch(error => {
@@ -28,17 +28,17 @@ export default function CharacterList() {
               });
       }
 
-      getCharacters(); 
+      getEpisodes(); 
 
    }, []);
 
   return (
-    <section className='character-list grid-view'>
+    <section className='episode-list grid-view'>
 
-      {characters.map(character => {
+      {episodes.map(episode => {
           
           // create a character card for each character 
-         return <Link to={`/characters`}><CharacterCard character = {character} /></Link>
+         return <Link to={`/episodes`}><EpisodeCard episode = {episode} /></Link>
       })}
 
     </section>
